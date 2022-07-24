@@ -41,7 +41,8 @@
             "final_map": "交通地圖",
             "error_title": "出了點狀況...",
             "error_content": "表單現在發生一些問題，請稍後再試試，如果情況一直發生，請直接聯絡我們，謝謝！",
-            "error_report": "回報問題"
+            "error_report": "回報問題",
+            "close": "表單填寫時間結束"
         },
         "validation": {
             "name": "X 姓名不能為空白",
