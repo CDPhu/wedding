@@ -23,7 +23,7 @@ const InfoBlock = ({ children }) => (
 const Register = () => {
     const [page, setPage] = useState(0);
     const [answer, setAnswer] = useState({});
-    const [featureEnable, setFeatureEnable] = useState(false);
+    const [featureEnable, setFeatureEnable] = useState(true);
     const [isFetchingConfig, setIsFetchingConfig] = useState(true);
 
     useEffect(() => {
@@ -35,7 +35,14 @@ const Register = () => {
         };
         // get remote config
         getRemoteConfig().then((value) => {
-            setFeatureEnable(value?.data?.enable);
+            if (value?.status === 200) {
+                setFeatureEnable(value?.data?.enable);
+            } else {
+                console.error(
+                    'Unexpected network issue, feature default enable'
+                );
+                setFeatureEnable(true);
+            }
             setIsFetchingConfig(false);
         });
     }, []);
@@ -62,9 +69,9 @@ const Register = () => {
                 </Box>
             </Flex>
             <BackgroundImages />
-            {
-                featureEnable && <Action answer={answer} page={page} updatePage={setPage} />
-            }
+            {featureEnable && (
+                <Action answer={answer} page={page} updatePage={setPage} />
+            )}
         </>
     );
 };

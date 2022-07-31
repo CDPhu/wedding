@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FadeIn from 'react-fade-in';
 
+import { BsPencil, BsCalendarEvent } from 'react-icons/bs';
+
 import Box from '../../components/Box';
 import Text from '../../components/Text';
 import Flex from '../../components/Flex';
 import Image from '../../components/Image';
-import { LinkButton } from '../../components/Button';
+import { LinkButton, LinkOuterButton } from '../../components/Button';
 
 import { color } from '../../config/theme';
+import { URL } from '../../config/common';
 import content from '../../assets/content.json';
 import ImageMain from '../../assets/images/main.png';
 
@@ -47,11 +50,6 @@ const StyledContentBlock = styled(Flex)`
     width: 100vw;
 `;
 
-const StyledTitle = styled(Text)`
-    padding: 16px 0 0;
-    font-size: 32px;
-`;
-
 const StyledTitleEventFirst = styled(Text)`
     @media (max-width: 768px) {
         font-size: 52px;
@@ -80,13 +78,6 @@ const Info = () => {
     return (
         <Flex justify="center" minWidth="375px" width="100vw">
             <Flex direction="column" minWidth="375px">
-                <StyledContentBlock>
-                    <FadeIn>
-                        <StyledTitle fontStyle="italic">
-                            {content.main.title_name}
-                        </StyledTitle>
-                    </FadeIn>
-                </StyledContentBlock>
                 <StyledContentBlock padding="16px 0 0">
                     <FadeIn delay={500} transitionDuration={1000}>
                         <StyledMainImage src={ImageMain} />
@@ -129,14 +120,27 @@ const Info = () => {
                     </Box>
                 </StyledContentBlock>
                 <StyledContentBlock margin="16px 0">
-                    <LinkButton
-                        to="/register"
-                        width="150px"
-                        height="35px"
-                        padding="6px"
-                    >
-                        {content.main.button_register}
+                    <LinkButton to="/register" width="140px">
+                        <Flex justify="center">
+                            <BsPencil />
+                            <Box padding="0 4px">
+                                {content.main.button_register}
+                            </Box>
+                        </Flex>
                     </LinkButton>
+                    <LinkOuterButton
+                        href={URL.EVENT}
+                        target="_blank"
+                        rel="noreferrer"
+                        width="140px"
+                    >
+                        <Flex justify="center">
+                            <BsCalendarEvent />
+                            <Box padding="0 4px">
+                                {content.main.button_event}
+                            </Box>
+                        </Flex>
+                    </LinkOuterButton>
                 </StyledContentBlock>
             </Flex>
         </Flex>

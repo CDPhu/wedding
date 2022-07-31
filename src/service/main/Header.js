@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { FaBars } from 'react-icons/fa';
+
 import Box from '../../components/Box';
 import Flex from '../../components/Flex';
 import Text from '../../components/Text';
@@ -9,7 +11,7 @@ import Text from '../../components/Text';
 import content from '../../assets/content.json';
 
 import { color } from '../../config/theme';
-import { PAGE } from '../../config/common';
+import { PAGE, URL } from '../../config/common';
 
 const StyleLink = styled(Link)`
     text-decoration: none;
@@ -80,11 +82,7 @@ const MobileMenu = styled(Flex)`
 const MenuItems = () => (
     <>
         <StyleLink to={PAGE.MAIN.PATH}>{content.header.home}</StyleLink>
-        <StyleOuterLink
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/sean1093/wedding"
-        >
+        <StyleOuterLink target="_blank" rel="noreferrer" href={URL.REPORT}>
             {content.header.report}
         </StyleOuterLink>
     </>
@@ -113,10 +111,9 @@ const Header = ({ service }) => {
                             <MenuItems />
                         </NormalMenu>
                         <MobileMenu>
-                            <MenuIcon
-                                onClick={onClickMenu}
-                                className="fa fa-bars"
-                            />
+                            <MenuIcon onClick={onClickMenu}>
+                                <FaBars />
+                            </MenuIcon>
                         </MobileMenu>
                     </>
                 )}

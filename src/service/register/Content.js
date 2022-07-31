@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Select from 'react-select';
+import { BsGeoAlt } from 'react-icons/bs';
 
 import Box from '../../components/Box';
 import Input, { StyleTextarea } from '../../components/Input';
@@ -20,6 +21,7 @@ import {
     CHILD
 } from '../../config/register';
 import { color } from '../../config/theme';
+import { URL } from '../../config/common';
 import { validateTel } from '../../utils/validation';
 
 import content from '../../assets/content.json';
@@ -399,11 +401,17 @@ const Content = ({ page, answer, setAnswer }) => {
                     </Flex>
                     <Flex justify="center" width="inherit" padding="24px 0">
                         <LinkOuterButton
-                            href="https://goo.gl/maps/EC4ipx7EXpMspT7x7"
+                            href={URL.MAP}
                             target="_blank"
                             rel="noreferrer"
+                            width="140px"
                         >
-                            {content.register.content.final_map}
+                            <Flex justify="center">
+                                <BsGeoAlt />
+                                <Box padding="0 4px">
+                                    {content.register.content.final_map}
+                                </Box>
+                            </Flex>
                         </LinkOuterButton>
                     </Flex>
                 </>

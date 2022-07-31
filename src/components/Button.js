@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Box from './Box';
 import { color } from '../config/theme';
+import { URL } from '../config/common';
 import content from '../assets/content.json';
 
 const BaseButton = styled(Box)`
@@ -36,6 +37,11 @@ export const LinkButton = styled(Link)`
     border: 1px solid ${color.black};
     box-sizing: border-box;
     border-radius: 10px;
+    &:hover {
+        background-color: ${color.primary};
+        color: white;
+        border: 1px solid white;
+    }
 `;
 
 export const LinkOuterButton = styled.a`
@@ -51,14 +57,15 @@ export const LinkOuterButton = styled.a`
     border: 1px solid ${color.black};
     box-sizing: border-box;
     border-radius: 10px;
+    &:hover {
+        background-color: ${color.primary};
+        color: white;
+        border: 1px solid white;
+    }
 `;
 
 export const ReportButton = () => (
-    <LinkOuterButton
-        href="https://github.com/sean1093/wedding/issues/new"
-        target="_blank"
-        rel="noreferrer"
-    >
+    <LinkOuterButton href={URL.REPORT} target="_blank" rel="noreferrer">
         {content.register.content.error_report}
     </LinkOuterButton>
 );
