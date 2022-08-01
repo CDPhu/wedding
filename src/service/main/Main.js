@@ -10,7 +10,7 @@ const Main = () => {
         <>
             <Header service={PAGE.MAIN.KEY} />
             <Info />
-            <BackgroundImages />
+            <BackgroundImages alt="background-images" />
         </>
     );
 };

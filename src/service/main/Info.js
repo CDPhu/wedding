@@ -80,7 +80,10 @@ const Info = () => {
             <Flex direction="column" minWidth="375px">
                 <StyledContentBlock padding="16px 0 0">
                     <FadeIn delay={500} transitionDuration={1000}>
-                        <StyledMainImage src={ImageMain} />
+                        <StyledMainImage
+                            src={ImageMain}
+                            alt="main-page-image"
+                        />
                     </FadeIn>
                 </StyledContentBlock>
                 <StyledContentBlock margin="4px 0">

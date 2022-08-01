@@ -397,6 +397,7 @@ const Content = ({ page, answer, setAnswer }) => {
                             width="300px"
                             src={ImageMain}
                             boxShadow="0px 0px 8px black"
+                            alt="final-image"
                         />
                     </Flex>
                     <Flex justify="center" width="inherit" padding="24px 0">

@@ -68,7 +68,7 @@ const Register = () => {
                     )}
                 </Box>
             </Flex>
-            <BackgroundImages />
+            <BackgroundImages alt="background-images" />
             {featureEnable && (
                 <Action answer={answer} page={page} updatePage={setPage} />
             )}
