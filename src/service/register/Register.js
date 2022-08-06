@@ -35,7 +35,7 @@ const Register = () => {
         };
         // get remote config
         getRemoteConfig().then((value) => {
-            if (value?.status === 200) {
+            if (value?.code === 200) {
                 setFeatureEnable(value?.data?.enable);
             } else {
                 console.error(

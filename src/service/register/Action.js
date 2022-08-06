@@ -110,7 +110,7 @@ const Action = ({ answer, page, updatePage }) => {
                                         const result = await postRequest({
                                             data: answer
                                         });
-                                        if (result?.status === 500) {
+                                        if (result?.status !== 200) {
                                             updatePage(5);
                                         }
                                     }}
