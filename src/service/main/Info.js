@@ -29,11 +29,6 @@ const StyledMainImage = styled(Image)`
         width: 300px;
         height: 225px;
     }
-
-    @media (max-width: 768px) {
-        width: 250px;
-        height: 187px;
-    }
 `;
 
 const StyledInfoText = styled(Text)`
