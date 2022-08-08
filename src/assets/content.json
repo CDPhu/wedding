@@ -13,7 +13,8 @@
         "location": "地點: 台北晶華酒店 4F 萬象廳",
         "address": "地址: 中山北路二段39巷3號 (捷運中山站)",
         "button_register": "填寫出席表單",
-        "button_event": "加入行事曆"
+        "button_event": "加入行事曆",
+        "button_photo": "婚紗照"
     },
     "register": {
         "content": {

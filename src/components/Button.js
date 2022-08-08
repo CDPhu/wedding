@@ -30,6 +30,7 @@ export const LinkButton = styled(Link)`
     text-decoration: none;
     text-align: center;
     padding: ${({ padding }) => (padding ? padding : '4px')};
+    margin: ${({ margin }) => (margin ? margin : '8px')};
     width: ${({ width }) => (width ? width : '120px')};
     height: ${({ height }) => (height ? height : '30px')};
     color: ${color.black};
@@ -48,7 +49,7 @@ export const LinkOuterButton = styled.a`
     display: inline-block;
     text-decoration: none;
     text-align: center;
-    margin: ${({ margin }) => (margin ? margin : '0 8px')};
+    margin: ${({ margin }) => (margin ? margin : '8px')};
     padding: ${({ padding }) => (padding ? padding : '4px')};
     width: ${({ width }) => (width ? width : '120px')};
     height: ${({ height }) => (height ? height : '30px')};

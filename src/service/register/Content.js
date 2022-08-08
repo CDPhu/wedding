@@ -34,7 +34,7 @@ const InputBlock = styled(Flex)`
 
     @media (max-width: 576px) {
         flex-direction: column;
-        padding: 16px 0;
+        padding: 8px 0;
     }
 `;
 

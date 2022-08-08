@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FadeIn from 'react-fade-in';
 
-import { BsPencil, BsCalendarEvent } from 'react-icons/bs';
-
 import Box from '../../components/Box';
 import Text from '../../components/Text';
 import Flex from '../../components/Flex';
 import Image from '../../components/Image';
-import { LinkButton, LinkOuterButton } from '../../components/Button';
+
+import ButtonAction from './layouts/ButtonAction';
 
 import { color } from '../../config/theme';
-import { URL } from '../../config/common';
 import content from '../../assets/content.json';
 import ImageMain from '../../assets/images/main.png';
 
@@ -118,27 +116,7 @@ const Info = () => {
                     </Box>
                 </StyledContentBlock>
                 <StyledContentBlock margin="16px 0">
-                    <LinkButton to="/register" width="140px">
-                        <Flex justify="center">
-                            <BsPencil />
-                            <Box padding="0 4px">
-                                {content.main.button_register}
-                            </Box>
-                        </Flex>
-                    </LinkButton>
-                    <LinkOuterButton
-                        href={URL.EVENT}
-                        target="_blank"
-                        rel="noreferrer"
-                        width="140px"
-                    >
-                        <Flex justify="center">
-                            <BsCalendarEvent />
-                            <Box padding="0 4px">
-                                {content.main.button_event}
-                            </Box>
-                        </Flex>
-                    </LinkOuterButton>
+                    <ButtonAction />
                 </StyledContentBlock>
             </Flex>
         </Flex>
