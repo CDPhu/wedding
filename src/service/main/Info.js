@@ -100,7 +100,29 @@ const Info = () => {
                     </FadeIn>
                 </StyledContentBlock>
                 <StyledContentBlock>
-                    <Box>
+                    <FadeIn delay={1000}>
+                        <Box padding="16px 0 0">
+                            <Text color={color.black}>
+                                {content.main.section_1_notes_1}
+                            </Text>
+                            <Text color={color.black}>
+                                {content.main.section_1_notes_2}
+                            </Text>
+                            <Text color={color.black} padding="16px 0 0">
+                                {content.main.section_2_notes_1}
+                            </Text>
+                            <Text color={color.black} padding="0 0 16px">
+                                {content.main.section_2_notes_2}
+                            </Text>
+                        </Box>
+                    </FadeIn>
+                </StyledContentBlock>
+                <StyledContentBlock>
+                    <Box
+                        border="1px black solid"
+                        borderBottom="1px black solid"
+                        margin="8px 0 0"
+                    >
                         <InformationComp
                             delay={1500}
                             content={content.main.time}
@@ -115,7 +137,7 @@ const Info = () => {
                         />
                     </Box>
                 </StyledContentBlock>
-                <StyledContentBlock margin="16px 0">
+                <StyledContentBlock margin="16px 0 36px">
                     <ButtonAction />
                 </StyledContentBlock>
             </Flex>

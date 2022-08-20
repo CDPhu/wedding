@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Select from 'react-select';
-import { BsGeoAlt } from 'react-icons/bs';
+import { BsGeoAlt, BsCalendarEvent } from 'react-icons/bs';
 
 import Box from '../../components/Box';
 import Input, { StyleTextarea } from '../../components/Input';
@@ -30,37 +30,26 @@ import ImageMain from '../../assets/images/finished.png';
 const InputBlock = styled(Flex)`
     width: inherit;
     justify-content: center;
-    padding: ${({ padding }) => padding || '28px 8px'};
-
-    @media (max-width: 576px) {
-        flex-direction: column;
-        padding: 8px 0;
-    }
+    flex-direction: column;
+    padding: 8px 0;
 `;
 
 const InputTitle = styled(Flex)`
-    width: 200px;
-    font-size: 20px;
-    padding: 6px 0;
+    width: inherit;
+    justify-content: center;
+    font-size: 16px;
+    padding: 6px 0 8px;
 
     &&::after {
         content: '${(props) => (props.optional ? '' : '*')}';
         color: ${color.warning};
     }
-
-    @media (max-width: 576px) {
-        width: inherit;
-        justify-content: center;
-        padding-bottom: 8px;
-    }
 `;
 
 const InputField = styled(Flex)`
-    @media (max-width: 576px) {
-        justify-content: center;
-        width: inherit;
-        padding-bottom: 8px;
-    }
+    justify-content: center;
+    width: inherit;
+    padding-bottom: 8px;
 `;
 
 const StyledSelect = styled(Select)`
@@ -74,7 +63,8 @@ const ValidationInput = ({
     value,
     validationFlag,
     validationWarning,
-    onInput
+    onInput,
+    placeholder
 }) => {
     return (
         <Flex direction="column">
@@ -84,6 +74,7 @@ const ValidationInput = ({
                 width="290px"
                 onChange={onInput}
                 borderColor={validationFlag ? color.disable : color.warning}
+                placeholder={placeholder}
             />
             {!validationFlag && (
                 <Text color={color.warning}>{validationWarning}</Text>
@@ -97,6 +88,19 @@ ValidationInput.propTypes = {
     validationFlag: PropTypes.bool.isRequired,
     validationWarning: PropTypes.string.isRequired,
     onInput: PropTypes.func.isRequired
+};
+
+const InputTitleComp = ({ title, notes }) => {
+    return (
+        <Flex direction="column" width="100vw">
+            <InputTitle>{title}</InputTitle>
+            {notes && (
+                <Flex justify="center" width="100vw">
+                    <Text color={color.black}>{notes}</Text>
+                </Flex>
+            )}
+        </Flex>
+    );
 };
 
 const Content = ({ page, answer, setAnswer }) => {
@@ -240,9 +244,10 @@ const Content = ({ page, answer, setAnswer }) => {
             {page === 1 && (
                 <>
                     <InputBlock>
-                        <InputTitle>
-                            {content.register.content.title_people}
-                        </InputTitle>
+                        <InputTitleComp
+                            title={content.register.content.title_people}
+                            notes={content.register.content.title_people_notes}
+                        />
                         <InputField>
                             <StyledSelect
                                 name="people"
@@ -291,24 +296,23 @@ const Content = ({ page, answer, setAnswer }) => {
                     <InputBlock
                         padding={validTel ? '28px 8px' : '28px 8px 11px'}
                     >
-                        <InputTitle>
-                            {content.register.content.title_tel}
-                        </InputTitle>
+                        <InputTitleComp
+                            title={content.register.content.title_tel}
+                            notes={content.register.content.title_tel_notes}
+                        />
                         <InputField>
-                            <Flex direction="column">
-                                <Text>
-                                    {content.register.content.title_tel_example}
-                                </Text>
-                                <ValidationInput
-                                    keyValue="tel"
-                                    value={tel}
-                                    validationFlag={validTel}
-                                    validationWarning={
-                                        content.register.validation.tel
-                                    }
-                                    onInput={onInputTel}
-                                />
-                            </Flex>
+                            <ValidationInput
+                                keyValue="tel"
+                                value={tel}
+                                validationFlag={validTel}
+                                validationWarning={
+                                    content.register.validation.tel
+                                }
+                                onInput={onInputTel}
+                                placeholder={
+                                    content.register.content.title_tel_example
+                                }
+                            />
                         </InputField>
                     </InputBlock>
                     <InputBlock>
@@ -387,18 +391,45 @@ const Content = ({ page, answer, setAnswer }) => {
             )}
             {page === 4 && (
                 <>
-                    <Flex justify="center" width="inherit">
-                        <Text fontSize="24px" padding="24px">
-                            {content.register.content.final_content}
-                        </Text>
-                    </Flex>
-                    <Flex justify="center" width="inherit">
+                    <Flex
+                        justify="center"
+                        width="inherit"
+                        padding="20px 0 12px"
+                    >
                         <Image
-                            width="300px"
+                            width="260px"
                             src={ImageMain}
                             boxShadow="0px 0px 8px black"
                             alt="final-image"
                         />
+                    </Flex>
+                    <Flex justify="center" width="inherit">
+                        <Text fontSize="20px" padding="20px 0 12px">
+                            {content.register.content.final_content}
+                        </Text>
+                    </Flex>{' '}
+                    <Flex justify="center" width="inherit">
+                        <Text fontSize="18px" padding="4px">
+                            {content.register.content.final_content_cont}
+                        </Text>
+                    </Flex>
+                    <Flex justify="center" width="inherit">
+                        <Text fontSize="22px" padding="8px" color={color.black}>
+                            {content.register.content.final_title}
+                        </Text>
+                    </Flex>
+                    <Flex justify="center" width="inherit">
+                        <Flex direction="column">
+                            <Text color={color.black} padding="4px">
+                                {content.main.time}
+                            </Text>
+                            <Text color={color.black} padding="4px">
+                                {content.main.location}
+                            </Text>
+                            <Text color={color.black} padding="4px">
+                                {content.main.address}
+                            </Text>
+                        </Flex>
                     </Flex>
                     <Flex justify="center" width="inherit" padding="24px 0">
                         <LinkOuterButton
@@ -411,6 +442,19 @@ const Content = ({ page, answer, setAnswer }) => {
                                 <BsGeoAlt />
                                 <Box padding="0 4px">
                                     {content.register.content.final_map}
+                                </Box>
+                            </Flex>
+                        </LinkOuterButton>
+                        <LinkOuterButton
+                            href={URL.EVENT}
+                            target="_blank"
+                            rel="noreferrer"
+                            width="140px"
+                        >
+                            <Flex justify="center" width="130px">
+                                <BsCalendarEvent />
+                                <Box padding="0 4px">
+                                    {content.main.button_event}
                                 </Box>
                             </Flex>
                         </LinkOuterButton>
