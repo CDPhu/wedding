@@ -8,7 +8,7 @@ const StyleText = styled(Box)`
     font-size: ${({ fontSize }) => fontSize || '14px'};
     text-align: ${({ textAlign }) => textAlign || 'left'};
     font-style: ${({ fontStyle }) => fontStyle || 'normal'};
-    color: ${({ color }) => color || '#E4B392'};
+    color: ${({ color }) => color || '#d48d5d'};
 `;
 
 const Text = ({

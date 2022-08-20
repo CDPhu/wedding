@@ -30,7 +30,7 @@ const StyledMainImage = styled(Image)`
 `;
 
 const StyledInfoText = styled(Text)`
-    color: ${color.font};
+    color: ${color.black};
     font-size: 16px;
     padding: 8px 36px;
     @media (max-width: 768px) {

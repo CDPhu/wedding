@@ -404,12 +404,20 @@ const Content = ({ page, answer, setAnswer }) => {
                         />
                     </Flex>
                     <Flex justify="center" width="inherit">
-                        <Text fontSize="20px" padding="20px 0 12px">
+                        <Text
+                            fontSize="20px"
+                            padding="8px 0"
+                            color={color.highlight}
+                        >
                             {content.register.content.final_content}
                         </Text>
                     </Flex>{' '}
                     <Flex justify="center" width="inherit">
-                        <Text fontSize="18px" padding="4px">
+                        <Text
+                            fontSize="18px"
+                            padding="4px"
+                            color={color.highlight}
+                        >
                             {content.register.content.final_content_cont}
                         </Text>
                     </Flex>
@@ -431,7 +439,7 @@ const Content = ({ page, answer, setAnswer }) => {
                             </Text>
                         </Flex>
                     </Flex>
-                    <Flex justify="center" width="inherit" padding="24px 0">
+                    <Flex justify="center" width="inherit" padding="8px 0 16px">
                         <LinkOuterButton
                             href={URL.MAP}
                             target="_blank"
