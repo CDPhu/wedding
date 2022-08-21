@@ -371,7 +371,7 @@ const Content = ({ page, answer, setAnswer }) => {
                         {vegetarian !== undefined && (
                             <Box padding="4px">
                                 {content.register.content.title_vegetarian}{' '}
-                                {people}
+                                {vegetarian}
                             </Box>
                         )}
                         {child !== undefined && (
