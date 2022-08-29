@@ -222,7 +222,7 @@ const Content = ({ page, answer, setAnswer }) => {
                         </InputField>
                     </InputBlock>
                     {(invitation === 0 || invitation === 1) && (
-                        <InputBlock>
+                        <InputBlock margin="0 0 20px">
                             <InputTitle>
                                 {invitation === 0 &&
                                     content.register.content.title_address}
