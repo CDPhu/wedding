@@ -41,3 +41,30 @@ export const getRequest = async (query) => {
         return { status: 500, message: error.message };
     }
 };
+
+export const postRequestWithData = async ({ url, data, method }) => {
+    const config = {
+        method,
+        body: data
+    };
+    try {
+        const response = await fetch(url, config);
+        return response?.json() || null;
+    } catch (error) {
+        console.error(error, '[postRequest] error');
+        return { status: 500, message: error.message };
+    }
+};
+
+export const postRequestWithoutResp = async ({ url, data, method }) => {
+    const config = {
+        method,
+        body: data
+    };
+    try {
+        await fetch(url, config);
+    } catch (error) {
+        console.error(error, '[postRequest] error');
+        return { status: 500, message: error.message };
+    }
+};

@@ -105,7 +105,7 @@ const Header = ({ service }) => {
                 <StyledTitle fontSize="24px" fontStyle="italic" padding="12px">
                     {content.header.title}
                 </StyledTitle>
-                {service === PAGE.REGISTER.KEY && (
+                {service !== PAGE.MAIN.KEY && (
                     <>
                         <NormalMenu>
                             <MenuItems />
@@ -117,7 +117,7 @@ const Header = ({ service }) => {
                         </MobileMenu>
                     </>
                 )}
-                {showMenu && service === PAGE.REGISTER.KEY && (
+                {showMenu && service !== PAGE.MAIN.KEY && (
                     <Menu>
                         <MenuItems />
                     </Menu>

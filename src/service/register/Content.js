@@ -27,14 +27,14 @@ import { validateTel } from '../../utils/validation';
 import content from '../../assets/content.json';
 import ImageMain from '../../assets/images/finished.png';
 
-const InputBlock = styled(Flex)`
+export const InputBlock = styled(Flex)`
     width: inherit;
     justify-content: center;
     flex-direction: column;
     padding: 8px 0;
 `;
 
-const InputTitle = styled(Flex)`
+export const InputTitle = styled(Flex)`
     width: inherit;
     justify-content: center;
     font-size: 16px;
@@ -46,7 +46,7 @@ const InputTitle = styled(Flex)`
     }
 `;
 
-const InputField = styled(Flex)`
+export const InputField = styled(Flex)`
     justify-content: center;
     width: inherit;
     padding-bottom: 8px;
@@ -58,7 +58,7 @@ const StyledSelect = styled(Select)`
     }
 `;
 
-const ValidationInput = ({
+export const ValidationInput = ({
     keyValue,
     value,
     validationFlag,

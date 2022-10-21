@@ -64,5 +64,13 @@
             "button_finish": "完成填寫",
             "button_home": "完成填寫"
         }
+    },
+    "share": {
+        "name": "您的姓名",
+        "comment": "祝福的話",
+        "upload": "上傳現場照片",
+        "choose_file": "選擇照片",
+        "file_name": "檔案名稱:",
+        "confirm": "確認送出"
     }
 }

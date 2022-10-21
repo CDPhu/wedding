@@ -6,6 +6,10 @@ export const PAGE = {
     REGISTER: {
         KEY: Symbol(),
         PATH: '/register'
+    },
+    SHARE: {
+        KEY: Symbol(),
+        PATH: '/share'
     }
 };
 
