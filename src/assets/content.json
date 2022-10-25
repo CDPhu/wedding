@@ -71,6 +71,8 @@
         "upload": "上傳現場照片",
         "choose_file": "選擇照片",
         "file_name": "檔案名稱:",
-        "confirm": "確認送出"
+        "confirm": "確認送出",
+        "sharing": "謝謝與我們分享祝福與照片!",
+        "retry": "再次分享"
     }
 }

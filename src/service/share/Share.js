@@ -5,11 +5,15 @@ import Header from '../main/Header';
 import { InputTitle, InputField, InputBlock } from '../register/Content';
 import Input, { StyleTextarea } from '../../components/Input';
 import Box from '../../components/Box';
+import Text from '../../components/Text';
 import Flex from '../../components/Flex';
 import { BackgroundImages } from '../../components/Image';
 import Loader from '../../components/Loader';
 
-import { postRequestWithData, postRequestWithoutResp } from '../../utils/httpService';
+import {
+    postRequestWithData,
+    postRequestWithoutResp
+} from '../../utils/httpService';
 import { PAGE } from '../../config/common';
 import { color } from '../../config/theme';
 import content from '../../assets/content.json';
@@ -70,6 +74,7 @@ const Share = () => {
     const [comment, setComment] = useState('');
     const [disableSendButton, setDisableSendButton] = useState(true);
     const [isPostingData, setIsPostingData] = useState(false);
+    const [isFinished, setIsFinished] = useState(true);
 
     const onSend = async () => {
         setIsPostingData(true);
@@ -89,6 +94,7 @@ const Share = () => {
         setSelectedImage(null);
         setSelectedImageName('');
         setIsPostingData(false);
+        setIsFinished(true);
     };
 
     useEffect(() => {
@@ -105,73 +111,108 @@ const Share = () => {
             )}
             {!isPostingData && (
                 <Flex justify="center" direction="column" width="100vw">
-                    <InputBlock>
-                        <InputTitle>{content.share.name}</InputTitle>
-                        <InputField>
-                            <Input
-                                value={name}
-                                width="290px"
-                                onChange={(e) => {
-                                    setName(e.target.value);
-                                }}
-                            />
-                        </InputField>
-                    </InputBlock>
-                    <InputBlock>
-                        <InputTitle optional={true}>
-                            {content.share.comment}
-                        </InputTitle>
-                        <InputField>
-                            <StyleTextarea
-                                width="280px"
-                                height="80px"
-                                onChange={(e) => {
-                                    setComment(e.target.value);
-                                }}
-                                value={comment}
-                                name="notes"
-                            />
-                        </InputField>
-                    </InputBlock>
-                    <InputBlock>
-                        <InputTitle>{content.share.upload}</InputTitle>
-                        <InputField>
-                            <StyledLabel>
-                                {content.share.choose_file}
-                                <StyledInput
-                                    type="file"
-                                    width="290px"
-                                    onChange={(event) => {
-                                        console.log(event.target.files[0]);
-                                        setSelectedImage(event.target.files[0]);
-                                        setSelectedImageName(
-                                            event.target.files[0].name
-                                        );
-                                    }}
-                                />
-                            </StyledLabel>
-                        </InputField>
-                        {selectedImageName && (
-                            <InputTitle optional={true}>
-                                {content.share.file_name} {selectedImageName}
-                            </InputTitle>
-                        )}
-                    </InputBlock>
-                    <InputBlock>
-                        <InputField>
-                            <StyledLine />
-                        </InputField>
-                    </InputBlock>
-                    <InputBlock>
-                        <InputField>
-                            <BaseButton
-                                disabled={disableSendButton}
-                                onClick={onSend}
-                            >
-                                {content.share.confirm}
-                            </BaseButton>
-                        </InputField>
-                    </InputBlock>
+                    {!isFinished && (
+                        <>
+                            <InputBlock>
+                                <InputTitle>{content.share.name}</InputTitle>
+                                <InputField>
+                                    <Input
+                                        value={name}
+                                        width="290px"
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                        }}
+                                    />
+                                </InputField>
+                            </InputBlock>
+                            <InputBlock>
+                                <InputTitle optional={true}>
+                                    {content.share.comment}
+                                </InputTitle>
+                                <InputField>
+                                    <StyleTextarea
+                                        width="280px"
+                                        height="80px"
+                                        onChange={(e) => {
+                                            setComment(e.target.value);
+                                        }}
+                                        value={comment}
+                                        name="notes"
+                                    />
+                                </InputField>
+                            </InputBlock>
+                            <InputBlock>
+                                <InputTitle>{content.share.upload}</InputTitle>
+                                <InputField>
+                                    <StyledLabel>
+                                        {content.share.choose_file}
+                                        <StyledInput
+                                            type="file"
+                                            width="290px"
+                                            onChange={(event) => {
+                                                console.log(
+                                                    event.target.files[0]
+                                                );
+                                                setSelectedImage(
+                                                    event.target.files[0]
+                                                );
+                                                setSelectedImageName(
+                                                    event.target.files[0].name
+                                                );
+                                            }}
+                                        />
+                                    </StyledLabel>
+                                </InputField>
+                                {selectedImageName && (
+                                    <InputTitle optional={true}>
+                                        {content.share.file_name}{' '}
+                                        {selectedImageName}
+                                    </InputTitle>
+                                )}
+                            </InputBlock>
+                            <InputBlock>
+                                <InputField>
+                                    <StyledLine />
+                                </InputField>
+                            </InputBlock>
+                            <InputBlock>
+                                <InputField>
+                                    <BaseButton
+                                        disabled={disableSendButton}
+                                        onClick={onSend}
+                                    >
+                                        {content.share.confirm}
+                                    </BaseButton>
+                                </InputField>
+                            </InputBlock>
+                        </>
+                    )}
+                    {isFinished && (
+                        <>
+                            <InputBlock>
+                                <InputField>
+                                    <Text
+                                        fontSize="20px"
+                                        color="black"
+                                        padding="28px 0px"
+                                    >
+                                        {content.share.sharing}
+                                    </Text>
+                                </InputField>
+                            </InputBlock>
+                            <InputBlock>
+                                <InputField>
+                                    <BaseButton
+                                        onClick={() => {
+                                            setIsFinished(false);
+                                        }}
+                                    >
+                                        {content.share.retry}
+                                    </BaseButton>
+                                </InputField>
+                            </InputBlock>
+                        </>
+                    )}
                 </Flex>
             )}
             <BackgroundImages alt="background-images" />
