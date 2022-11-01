@@ -63,7 +63,7 @@ const InfoBlock = ({ children }) => (
 
 const StyledLine = styled.span`
     width: 290px;
-    padding: 16px;
+    padding: 8px;
     border-bottom: 1px solid ${color.primary};
 `;
 
@@ -74,7 +74,7 @@ const Share = () => {
     const [comment, setComment] = useState('');
     const [disableSendButton, setDisableSendButton] = useState(true);
     const [isPostingData, setIsPostingData] = useState(false);
-    const [isFinished, setIsFinished] = useState(true);
+    const [isFinished, setIsFinished] = useState(false);
 
     const onSend = async () => {
         setIsPostingData(true);
@@ -114,13 +114,18 @@ const Share = () => {
                     {!isFinished && (
                         <>
                             <InputBlock>
+                                <InputTitle optional={true}>
+                                    {content.share.title}
+                                </InputTitle>
+                            </InputBlock>
+                            <InputBlock>
                                 <InputTitle>{content.share.name}</InputTitle>
                                 <InputField>
                                     <Input
                                         value={name}
                                         width="290px"
                                         onChange={(e) => {
-                                            setName(e.target.value);
+                                            setName(e?.target?.value);
                                         }}
                                     />
                                 </InputField>
@@ -134,7 +139,7 @@ const Share = () => {
                                         width="280px"
                                         height="80px"
                                         onChange={(e) => {
-                                            setComment(e.target.value);
+                                            setComment(e?.target?.value);
                                         }}
                                         value={comment}
                                         name="notes"
@@ -150,14 +155,12 @@ const Share = () => {
                                             type="file"
                                             width="290px"
                                             onChange={(event) => {
-                                                console.log(
-                                                    event.target.files[0]
-                                                );
                                                 setSelectedImage(
-                                                    event.target.files[0]
+                                                    event?.target?.files[0]
                                                 );
                                                 setSelectedImageName(
-                                                    event.target.files[0].name
+                                                    event?.target?.files[0]
+                                                        ?.name
                                                 );
                                             }}
                                         />
@@ -193,10 +196,19 @@ const Share = () => {
                                 <InputField>
                                     <Text
                                         fontSize="20px"
-                                        color="black"
+                                        color={color.black}
                                         padding="28px 0px"
                                     >
                                         {content.share.sharing}
+                                    </Text>
+                                </InputField>
+                                <InputField>
+                                    <Text
+                                        fontSize="16px"
+                                        color={color.black}
+                                        padding="4px 0px"
+                                    >
+                                        {content.share.sharing_notes}
                                     </Text>
                                 </InputField>
                             </InputBlock>
