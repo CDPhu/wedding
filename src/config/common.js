@@ -10,6 +10,10 @@ export const PAGE = {
     SHARE: {
         KEY: Symbol(),
         PATH: '/share'
+    },
+    GALLERY:{
+        KEY: Symbol(),
+        PATH: '/gallery'
     }
 };
 

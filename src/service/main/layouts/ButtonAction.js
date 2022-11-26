@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { BsPencil, BsGeoAlt, BsCalendarEvent, BsImages } from 'react-icons/bs';
+import { BsPencil, BsGeoAlt, BsCalendarEvent, BsImages, BsCamera } from 'react-icons/bs';
 
 import Box from '../../../components/Box';
 import Flex from '../../../components/Flex';
@@ -21,6 +21,12 @@ const StyledButtonActionBlock = styled(Flex)`
 const ButtonAction = () => {
     return (
         <StyledButtonActionBlock>
+            <LinkButton to="/gallery" width="140px">
+                <Flex justify="center" width="130px">
+                    <BsCamera />
+                    <Box padding="0 4px">{content.main.button_gallery}</Box>
+                </Flex>
+            </LinkButton>
             <LinkButton to="/register" width="140px">
                 <Flex justify="center" width="130px">
                     <BsPencil />
